@@ -1,0 +1,37 @@
+{% extends "baseTemplate.html"%}
+
+{% block title %}
+Comments
+{% endblock %}
+
+{% block content %}
+
+    Comments on "{{blog.title}}"
+    <hr>
+    <div class="commentlist">
+    {% if comments %}
+	    <ul>
+	    {% for comment in comments %}
+	    <li>
+	        {{ comment.commenter }} -- [{{comment.ratingText}}] <br />
+          {{ comment.content }}<br />
+		<!--Posted on {{ comment.post_date|date:"F j, Y" }}-->
+		----------------------------------------------------------
+        </li>
+		
+	    {% endfor %}
+	    </ul>
+
+	    {% else %}
+	    <p>No comments on this entry.</p>
+	{% endif %}
+    </div>
+{% endblock %}
+
+{% block footer %}    
+
+       <p><a href="add">Add a comment</a></p> 
+	   <p><a href='..'>Return to {{blog.title}}</a></p>
+	   <p><a href="/">Return to Top</a></p>
+    
+{% endblock %}

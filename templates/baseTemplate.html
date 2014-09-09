@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN”
+    “http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd”>
+<html>
+    <head>
+        
+        <meta http-equiv=”Content-Type”
+            content=”text/html; charset=utf-8”/>
+
+        <title>ZyhBlog</title>
+
+        <style type="text/css">
+        #intro {background-color: #2F2F2F;
+	           color: #ffffff;
+	           margin-right:20%;
+               margin-left:2%;
+               font-size: small;
+	           border-right: #ffffff solid;	       
+		       }
+        
+        #title h1, h6{color: #6e682d;}
+        h1  {
+            font-size: 300%;
+            }
+        
+        h2  {
+            font-size: 150%;
+            }
+        
+        h3 {
+           font-size: 125%;
+           }
+
+	#list {
+	float: left;
+	width: 100%;
+	margin: 0;
+	padding: 10px 0 0 0; 
+	list-style: none;
+	background: #2f2f2f;
+    border-bottom-style: solid;
+	}
+	#list li {
+	float: left;
+	margin: 0;
+	padding: 0;
+	font-family: "Lucida Grande", sans-serif;
+	font-size: 90%;
+	}
+	#list a {
+	float: left;
+	display:block;
+	margin: 0 1px 0 0;
+	padding: 4px 8px;
+	color: #333;
+	text-decoration: none;
+	border: 1px solid #9b8748;
+	border-bottom: none;
+	background: #f9e9a9; 
+	}
+
+
+	#hr1, #hr2 {
+                height: 10px;
+	            color: gray;
+	            background-color: gray;
+                }
+
+	#mood ul {list-style-type:circle;}
+       
+	a {text-decoration: none;}
+            
+    .content a {text-transform: capitalize;
+                color: #f9e9a9;
+                font-size: 150%;
+                }
+	
+	.final p {text-align:right;
+              font-size:9px;}
+    
+	.footer a {color: #f9e9a9;
+               float: left;
+               display:block;
+               margin-right: 15px;
+               border-left-style: solid;}
+	
+    #powerby p {font-size: 70%;
+                text-align: right;}
+    #powerby a {decoration: none;
+                color: red;}
+	{% block style %}{% endblock %}
+	</style>
+        
+        {% block head %}{% endblock %}
+    </head>
+    
+    <body id="intro">
+        <div id="title" >
+           <h1>ZhangYH</h1>
+           <h6>活到老, 学到老.</h6>
+ 
+      	</div>
+ 
+ 
+        <ul id="list">              
+            <li id="home"><a href="/">Home</a></li> 
+            <li id="about"><a href="/about">About</a></li>
+            <li id="bloglist"><a href="/bloglist">Entry list</a></li>
+	           <li id="moodlist"><a href="/moodlist">Mood list</a></li>
+            </ul>
+ 
+        
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>    
+   
+
+        <hr />
+        <div class="footer">
+            {% block footer %}
+               <a href="/"> Return to Top </a>
+            {% endblock %}
+	    
+	        {% if user.is_authenticated %}
+	            <a href="/accounts/logout">Logout {{ user.username }} </a>
+	        {% else %}
+		          <a href="/accounts/login">Sign in </a>
+		          <a href="/accounts/newUser">NewUser </a>
+	        {% endif %}
+        </div>
+
+        <div id="powerby">
+            <p>Power by<a href="https://www.djangoproject.com/">Django</a></p>
+        </div>
+        
+        <!-- JiaThis Button BEGIN -->
+        <script type="text/javascript" src="http://v2.jiathis.com/code/jiathis_r.js?move=0&amp;btn=r2.gif" charset="utf-8"></script>
+        <!-- JiaThis Button END -->
+</body>
+</html>

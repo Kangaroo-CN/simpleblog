@@ -1,0 +1,39 @@
+{% extends "baseTemplate.html" %}
+
+{% block style %}
+#list a:hover, body#intro #moodlist a
+    {
+    color: #ffffff;
+    padding-bottom: 5px;
+    border-color: #727377;
+    background: #2f2f2f;
+    }
+    
+    .moodlist ul {list-style-type: circle;}
+{% endblock %}
+
+
+{% block content %}
+<div class="moodlist">
+        {% if mood_list %}
+            <ul>
+            {% for mood in mood_list %}
+                <p><li>{{ mood.content }}
+                               ------Posted on
+                              {{ mood.post_date|date:"F j, Y"}}
+                       </li>
+		</p>
+            {% endfor %}
+           </ul>
+        {% else %}
+        <p>No moods are available.</p>
+    {% endif%}
+    <p/>
+    </div>    
+{% endblock %}
+
+{% block footer %}
+    <div class="footerlink">
+    </div>
+    
+{% endblock %}

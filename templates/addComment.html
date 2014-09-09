@@ -1,0 +1,36 @@
+{% extends "baseTemplate.html"%}
+
+{% block head %}
+	<!-- TinyMCE -->
+
+	<script type="text/javascript" src="/home/johnnyz/Desktop/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+	<script type="text/javascript">
+		tinyMCE.init({
+			mode : "textareas",
+    			theme: "simple",
+		});
+
+	</script>
+
+<!-- /TinyMCE -->
+{% endblock %}
+
+{% block content %}
+   <h2>{{ blog.title }}</h2>添加评论
+    
+    <form action="/blog/{{ blog.id }}/postComment/" method="post">
+        Name:<br />
+	       <input type="text" name="commenter"><br />
+        Comment:<br />   
+        <textarea name="content" style="width:30%"></textarea>
+        <p/>
+        How do you rate this entry:
+        <select name="rating">
+            {% for r in blog.RATING_CHOICES %}
+                <option value="{{r.0}}">{{r.1}}</option>
+	        {% endfor %}
+         </select>
+	 <p/>
+	 <input type="submit" value="submit" >
+    </form>
+{% endblock %}

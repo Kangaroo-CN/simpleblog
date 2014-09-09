@@ -1,0 +1,28 @@
+{% extends "baseTemplate.html" %}
+
+{% block title %} Simple Django Blog {% endblock %}
+
+{% block content %}
+    <div class="bloglist">
+        {% if latest_blog_list %}
+            <ul>
+            {% for blog in latest_blog_list %}
+                <li><a href="blog/{{blog.id}}/">{{ blog.title }}</a>
+                Posted on
+                {{ blog.post_date|date:"F j, Y"}}
+                by {{blog.reply_to}}
+            </li>
+            {% endfor %}
+           </ul>
+        {% else %}
+        <p>No blogs are available.</p>
+    {% endif%}
+    <p/>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div class="footerlink">
+    <a href="writeBlog">Add new entry</a>
+    </div>
+{% endblock %}

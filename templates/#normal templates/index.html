@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Strict//EN”
+    “http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd”>
+<html xmlns=”http://www.w3.org/1999/xhtml”
+    xmlns:v=”urn:schemas-microsoft-com:vml”>
+
+<head>
+    <meta http-equiv=”Content-Type” content=”text/html; charset=utf-8”/>
+
+    <title>Simple Django BLog</title>
+
+    <!-- Load our color and font preferences -->
+    <link rel=StyleSheet href=”/scripts/style.css” TYPE=”text/css”>
+</head>
+
+<body>
+    <h1>Simple Django Blog</h1>
+    <hr>
+    <div class="bloglist">
+        {% if latest_blog_list %}
+            <ul>
+            {% for blog in latest_blog_list %}
+                <li><a href="blog/{{blog.id}}/">{{ blog.title }}</a>
+                Posted on
+                {{ blog.post_date|date:"F j, Y"}}
+                by {{blog.reply_to}}
+            </li>
+            {% endfor %}
+           </ul>
+        {% else %}
+	    <p>No blogs are available.</p>
+	{% endif%}
+	<p/>
+    </div>
+    <hr>
+    <div class="footerlink">
+      <a href="writeBlog">Add new entry</a>
+    </div>
+</body>
+</html>

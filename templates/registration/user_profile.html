@@ -1,0 +1,11 @@
+{% extends "baseTemplate.html" %}
+
+{% block title %}
+<h2>Welcome, {{user.username}}</h2>
+{% endblock %}
+
+{% block content %}
+<p>Username: {{user.username}}</p>
+<p>Email Address: {{user.email}}</p>
+<p>Last login time: {{user.last_login}}</p>
+{% endblock %}

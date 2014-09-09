@@ -1,0 +1,56 @@
+{% extends "baseTemplate.html" %}
+
+{% block style %}
+#list a:hover, body#intro #home a
+    {
+    color: #ffffff;
+    padding-bottom: 5px;
+    border-color: #727377;
+    background: #2f2f2f;
+    }
+{% endblock %}
+
+
+{% block content %}
+
+    <div id="mood">
+    <h4>New moods:</h4> 
+    {% if latest_mood_list %}
+        <ul>
+        {% for mood in latest_mood_list %}
+            <li>"{{ mood.content }}"
+               ----Posted on
+            {{ mood.post_date|date:"F j, Y"}}
+            </li>
+	{% endfor %}
+        </ul>
+    {% else %}
+	<p>No moods are availbable.</p>
+    {% endif %}
+    </div>
+
+    <div class="bloglist">
+    <h4>New entrys：</h4>
+        {% if latest_blog_list %}
+        <ul>
+            {% for blog in latest_blog_list %}
+                <li><a href="blog/{{blog.id}}/">{{ blog.title }}</a>
+                ----Posted on
+                {{ blog.post_date|date:"F j, Y"}}
+                by {{blog.reply_to}}
+            </li>
+		{{ blog.content|escape|linebreaks }} <br />
+            <hr />	    
+            {% endfor %}
+           </ul>
+        {% else %}
+        <p>No blogs are available.</p>
+    {% endif%}
+    <p/>
+    </div>
+{% endblock %}
+
+{% block footer %}
+       <a href="writeBlog">Add new entry</a>
+   
+{% endblock %}

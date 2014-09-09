@@ -1,0 +1,21 @@
+{% extends "baseTemplate.html"%}
+
+{% block title %}
+{{ blog.title}}
+{% endblock %}
+
+{% block content %}
+<p>Published on {{blog.post_date|date:"F j, Y"}}</p>
+<p>Posted by {{blog.reply_to}}</p>
+<p>Current rating is {{blog.rating}} out of 5</p>
+
+<div class="blogtext">
+    {{blog.content|escape|linebreaks}}
+</div>
+{% endblock %}
+
+{% block footer %}
+    <a href="comment">View {{blog.comment_set.count}}
+        comment{{blog.comment_set.count|pluralize}}</a><br/>
+    {{ block.super }}
+{% endblock %}
